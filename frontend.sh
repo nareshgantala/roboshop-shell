@@ -1,4 +1,5 @@
 dnf install nginx -y 
+cp roboshop.conf /etc/nginx/default.d/roboshop.conf
 systemctl enable nginx 
 systemctl start nginx 
 rm -rf /usr/share/nginx/html/* 
