@@ -1,3 +1,9 @@
+dirname $0
+
+exit
+
+
+
 echo -e "\e[32m<<<<<<<<<< Install nginx >>>>>>>\e[0m"
 
 dnf install nginx -y 
