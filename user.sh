@@ -45,6 +45,6 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[32m<<<<<<<<<< Install mongo shell >>>>>>>\e[0m"
 
-yum install mongodb-org-shell -y
+dnf install mongodb-org-shell -y
 mongo --host mongodb-dev.cloudlife.site </app/schema/user.js
 
