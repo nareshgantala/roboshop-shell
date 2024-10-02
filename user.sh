@@ -38,7 +38,13 @@ systemctl daemon-reload
 systemctl enable user 
 systemctl start user
 
+
+echo -e "\e[32m<<<<<<<<<< copy mongo repo file >>>>>>>\e[0m"
+
 cp mongo.repo /etc/yum.repos.d/mongo.repo
+
+echo -e "\e[32m<<<<<<<<<< Install mongo shell >>>>>>>\e[0m"
+
 yum install mongodb-org-shell -y
 mongo --host mongodb-dev.cloudlife.site </app/schema/user.js
 
