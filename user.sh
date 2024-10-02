@@ -41,7 +41,7 @@ systemctl start user
 
 echo -e "\e[32m<<<<<<<<<< copy mongo repo file >>>>>>>\e[0m"
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp -v mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[32m<<<<<<<<<< Install mongo shell >>>>>>>\e[0m"
 
