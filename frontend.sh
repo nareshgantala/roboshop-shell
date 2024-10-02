@@ -1,7 +1,7 @@
 script_path=$(dirname $0)
 source ${script_path}/common.sh
 
-${app_user}
+echo ${app_user}
 
 dirname $0
 
