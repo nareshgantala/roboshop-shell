@@ -33,7 +33,7 @@ dnf install mysql -y
 
 echo -e "\e[32m<<<<<<<<<<Load schema, includes countries and cities  >>>>>>>\e[0m"
 
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 < /app/schema/shipping.sql 
+mysql -h mysql-dev.cloudlife.site -uroot -pRoboShop@1 < /app/schema/shipping.sql 
 
 
 echo -e "\e[32m<<<<<<<<<< Restart shippind service  >>>>>>>\e[0m"
