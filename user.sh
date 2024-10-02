@@ -14,6 +14,10 @@ echo -e "\e[32m<<<<<<<<<< Copy user service systemd file >>>>>>>\e[0m"
 cp user.service /etc/systemd/system/user.service
 echo -e "\e[32m<<<<<<<<<< Create roboshop user >>>>>>>\e[0m"
 
+echo -e "\e[32m<<<<<<<<<< copy mongo repo file >>>>>>>\e[0m"
+
+cp -v mongo.repo /etc/yum.repos.d/mongo.repo
+
 useradd roboshop
 rm -rf /app
 mkdir /app 
@@ -39,9 +43,7 @@ systemctl enable user
 systemctl start user
 
 
-echo -e "\e[32m<<<<<<<<<< copy mongo repo file >>>>>>>\e[0m"
 
-cp -v mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[32m<<<<<<<<<< Install mongo shell >>>>>>>\e[0m"
 
