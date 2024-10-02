@@ -9,6 +9,7 @@ useradd roboshop
 echo -e "\e[32m<<<<<<<<<< copy payment service systemd file  >>>>>>>\e[0m"
 
 cp payment.service /etc/systemd/system/payment.service
+rm -rf /app
 mkdir /app 
 
 echo -e "\e[32m<<<<<<<<<< Download payment zip file  >>>>>>>\e[0m"

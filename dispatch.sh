@@ -9,6 +9,7 @@ echo -e "\e[32m<<<<<<<<<< Copy dispatch service systemd file >>>>>>>\e[0m"
 
 
 cp dispatch.service /etc/systemd/system/dispatch.service
+rm -rf /app
 mkdir /app 
 
 echo -e "\e[32m<<<<<<<<<< Download dispatch zip file >>>>>>>\e[0m"

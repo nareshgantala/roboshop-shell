@@ -17,6 +17,7 @@ cp cart.service /etc/systemd/system/cart.service
 echo -e "\e[32m<<<<<<<<<< Create roboshop user >>>>>>>\e[0m"
 
 useradd roboshop
+rm -rf /app
 mkdir /app 
 
 echo -e "\e[32m<<<<<<<<<< Download cart zip file >>>>>>>\e[0m"

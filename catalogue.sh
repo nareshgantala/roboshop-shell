@@ -21,6 +21,7 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo
 echo -e "\e[32m<<<<<<<<<< Create roboshop user >>>>>>>\e[0m"
 
 useradd roboshop
+rm -rf /app
 mkdir /app 
 
 echo -e "\e[32m<<<<<<<<<< Download Catlogue zip file >>>>>>>\e[0m"
