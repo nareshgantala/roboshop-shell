@@ -1,9 +1,12 @@
+script_path=$(dirname $0)
+source ${script_path}/common.sh
+
 echo -e "\e[32m<<<<<<<<<< Disable current mysql  >>>>>>>\e[0m"
 
 dnf module disable mysql -y 
 echo -e "\e[32m<<<<<<<<<< copy mysql repo  >>>>>>>\e[0m"
 
-cp mysql.repo /etc/yum.repos.d/mysql.repo
+cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo
 
 echo -e "\e[32m<<<<<<<<<< install mysql server  >>>>>>>\e[0m"
 

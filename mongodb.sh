@@ -1,5 +1,8 @@
+script_path=$(dirname $0)
+source ${script_path}/common.sh
+
 echo -e "\e[32m<<<<<<<<<< copy mongodb repo >>>>>>>\e[0m"
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[32m<<<<<<<<<< Install mongodb org >>>>>>>\e[0m"
 dnf install mongodb-org -y 

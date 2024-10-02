@@ -1,13 +1,6 @@
 script_path=$(dirname $0)
 source ${script_path}/common.sh
 
-echo ${app_user}
-
-dirname $0
-
-exit
-
-
 
 echo -e "\e[32m<<<<<<<<<< Install nginx >>>>>>>\e[0m"
 
@@ -15,7 +8,7 @@ dnf install nginx -y
 
 echo -e "\e[32m<<<<<<<<<< copy roboshop config file >>>>>>>\e[0m"
 
-cp roboshop.conf /etc/nginx/default.d/roboshop.conf
+cp ${script_path}/roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 
 echo -e "\e[32m<<<<<<<<<< Remove the defult content >>>>>>>\e[0m"

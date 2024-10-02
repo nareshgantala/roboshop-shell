@@ -1,4 +1,5 @@
-source common.sh
+script_path=$(dirname $0)
+source ${script_path}/common.sh
 
 echo -e "\e[32m<<<<<<<<<< Install golang >>>>>>>\e[0m"
 
@@ -10,7 +11,7 @@ useradd ${app_user}
 echo -e "\e[32m<<<<<<<<<< Copy dispatch service systemd file >>>>>>>\e[0m"
 
 
-cp dispatch.service /etc/systemd/system/dispatch.service
+cp ${script_path}/dispatch.service /etc/systemd/system/dispatch.service
 rm -rf /app
 mkdir /app 
 

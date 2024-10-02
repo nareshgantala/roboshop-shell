@@ -1,4 +1,5 @@
-source common.sh
+script_path=$(dirname $0)
+source ${script_path}/common.sh
 
 echo -e "\e[32m<<<<<<<<<< Install python 3.6, and some dependencies  >>>>>>>\e[0m"
 
@@ -10,7 +11,7 @@ useradd ${app_user}
 
 echo -e "\e[32m<<<<<<<<<< copy payment service systemd file  >>>>>>>\e[0m"
 
-cp payment.service /etc/systemd/system/payment.service
+cp ${script_path}/payment.service /etc/systemd/system/payment.service
 rm -rf /app
 mkdir /app 
 

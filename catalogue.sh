@@ -1,4 +1,5 @@
-source common.sh
+script_path=$(dirname $0)
+source ${script_path}/common.sh
 
 echo -e "\e[32m<<<<<<<<<< Disable current nodejs module>>>>>>>\e[0m"
 
@@ -14,7 +15,7 @@ dnf install nodejs -y
 
 echo -e "\e[32m<<<<<<<<<< Copy catalogue service systemd file >>>>>>>\e[0m"
 
-cp catalogue.service /etc/systemd/system/catalogue.service
+cp ${script_path}/catalogue.service /etc/systemd/system/catalogue.service
 echo -e "\e[32m<<<<<<<<<< Copy mongodb repo >>>>>>>\e[0m"
 
 
