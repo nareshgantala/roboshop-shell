@@ -1,3 +1,8 @@
+script_path=$(dirname $0)
+source ${script_path}/common.sh
+
+${app_user}
+
 dirname $0
 
 exit
