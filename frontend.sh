@@ -18,7 +18,7 @@ cd /usr/share/nginx/html
 echo -e "\e[32m<<<<<<<<<< unzip front end file >>>>>>>\e[0m"
 unzip /tmp/frontend.zip
 
-echo -e "\e[32m<<<<<<<<<< Restart Cart Service >>>>>>>\e[0m"
+echo -e "\e[32m<<<<<<<<<< Restart front end Service >>>>>>>\e[0m"
 #some file needs to be created
 systemctl enable nginx 
 systemctl restart nginx 
