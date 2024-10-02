@@ -1,3 +1,5 @@
+source common.sh
+
 echo -e "\e[32m<<<<<<<<<< Disable current nodejs module>>>>>>>\e[0m"
 
 dnf module disable nodejs -y
@@ -16,7 +18,7 @@ cp cart.service /etc/systemd/system/cart.service
 
 echo -e "\e[32m<<<<<<<<<< Create roboshop user >>>>>>>\e[0m"
 
-useradd roboshop
+useradd ${app_user}
 rm -rf /app
 mkdir /app 
 

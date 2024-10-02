@@ -1,3 +1,5 @@
+source common.sh
+
 echo -e "\e[32m<<<<<<<<<< Disable current nodejs module>>>>>>>\e[0m"
 
 dnf module disable nodejs -y
@@ -18,7 +20,7 @@ echo -e "\e[32m<<<<<<<<<< copy mongo repo file >>>>>>>\e[0m"
 
 cp -v mongo.repo /etc/yum.repos.d/mongo.repo
 
-useradd roboshop
+useradd ${app_user}
 rm -rf /app
 mkdir /app 
 

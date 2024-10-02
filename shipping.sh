@@ -1,10 +1,12 @@
+source common.sh
+
 echo -e "\e[32m<<<<<<<<<< Install maven  >>>>>>>\e[0m"
 
 dnf install maven -y
 
 echo -e "\e[32m<<<<<<<<<< add roboshop user  >>>>>>>\e[0m"
 
-useradd roboshop
+useradd ${app_user}
 
 echo -e "\e[32m<<<<<<<<<< copy shipping service systemd file  >>>>>>>\e[0m"
 

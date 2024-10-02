@@ -1,10 +1,12 @@
+source common.sh
+
 echo -e "\e[32m<<<<<<<<<< Install golang >>>>>>>\e[0m"
 
 dnf install golang -y
 
 echo -e "\e[32m<<<<<<<<<< Create roboshop user >>>>>>>\e[0m"
 
-useradd roboshop
+useradd ${app_user}
 echo -e "\e[32m<<<<<<<<<< Copy dispatch service systemd file >>>>>>>\e[0m"
 
 
