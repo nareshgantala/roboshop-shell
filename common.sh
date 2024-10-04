@@ -13,7 +13,7 @@ func_nodejs(){
 
     dnf install nodejs -y
 
-    echo -e "\e[32m<<<<<<<<<< Copy cart service systemd file >>>>>>>\e[0m"
+    echo -e "\e[32m<<<<<<<<<< Copy ${component} service systemd file >>>>>>>\e[0m"
 
     cp ${script_path}/${component}.service /etc/systemd/system/${component}.service
 
@@ -23,11 +23,11 @@ func_nodejs(){
     rm -rf /app
     mkdir /app 
 
-    echo -e "\e[32m<<<<<<<<<< Download cart zip file >>>>>>>\e[0m"
+    echo -e "\e[32m<<<<<<<<<< Download ${component} zip file >>>>>>>\e[0m"
     curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip 
     cd /app 
 
-    echo -e "\e[32m<<<<<<<<<< Unzip cart files >>>>>>>\e[0m"
+    echo -e "\e[32m<<<<<<<<<< Unzip ${component} files >>>>>>>\e[0m"
 
     unzip /tmp/${component}.zip
 
@@ -36,7 +36,7 @@ func_nodejs(){
 
     npm install 
 
-    echo -e "\e[32m<<<<<<<<<< Restart Cart Service >>>>>>>\e[0m"
+    echo -e "\e[32m<<<<<<<<<< Restart ${component} Service >>>>>>>\e[0m"
 
     systemctl daemon-reload
     systemctl enable ${component} 
