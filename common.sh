@@ -4,6 +4,23 @@ print_head(){
      echo -e "\e[33m<<<<<<<<<< $* >>>>>>>\e[0m"
 }
 
+schema_setup(){
+    if [ "$schema_setup" == mongo ]; then
+
+        print_head copy mongoDB repo file
+        cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
+
+        print_head install mongodb shell 
+
+        dnf install mongodb-org-shell -y
+
+        print_head Load master data of list of products 
+
+        mongo --host mongodb-dev.cloudlife.site </app/schema/${component}.js
+    fi
+}
+
+
 func_nodejs(){
     print_head "Disable current nodejs module"
 
