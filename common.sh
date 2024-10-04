@@ -1,42 +1,46 @@
 app_user=roboshop
 
+print_head(){
+     echo -e "\e[32m<<<<<<<<<< $* >>>>>>>\e[0m"
+}
+
 func_nodejs(){
-    echo -e "\e[32m<<<<<<<<<< Disable current nodejs module>>>>>>>\e[0m"
+    print_head "Disable current nodejs module"
 
     dnf module disable nodejs -y
 
-    echo -e "\e[32m<<<<<<<<<< Enable 18 Version nodejs module>>>>>>>\e[0m"
+    print_head "Enable 18 Version nodejs module"
 
     dnf module enable nodejs:18 -y
 
-    echo -e "\e[32m<<<<<<<<<< Install nodejs >>>>>>>\e[0m"
+    print_head "Install nodejs" 
 
     dnf install nodejs -y
 
-    echo -e "\e[32m<<<<<<<<<< Copy ${component} service systemd file >>>>>>>\e[0m"
+    print_head "Copy ${component} service systemd file" 
 
     cp ${script_path}/${component}.service /etc/systemd/system/${component}.service
 
-    echo -e "\e[32m<<<<<<<<<< Create roboshop user >>>>>>>\e[0m"
+    print_head "Create roboshop user" 
 
     useradd ${app_user}
     rm -rf /app
     mkdir /app 
 
-    echo -e "\e[32m<<<<<<<<<< Download ${component} zip file >>>>>>>\e[0m"
+    print_head "Download ${component} zip file" 
     curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip 
     cd /app 
 
-    echo -e "\e[32m<<<<<<<<<< Unzip ${component} files >>>>>>>\e[0m"
+    print_head "Unzip ${component} files" 
 
     unzip /tmp/${component}.zip
 
     cd /app 
-    echo -e "\e[32m<<<<<<<<<< Install nodejs Dependencies >>>>>>>\e[0m"
+    print_head "Install nodejs Dependencies" 
 
     npm install 
 
-    echo -e "\e[32m<<<<<<<<<< Restart ${component} Service >>>>>>>\e[0m"
+    print_head "Restart ${component} Service" 
 
     systemctl daemon-reload
     systemctl enable ${component} 
