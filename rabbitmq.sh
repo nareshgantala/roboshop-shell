@@ -8,23 +8,24 @@ if [ -z "rabbitmq_appuser_password"]; then
 fi
 
 
-echo -e "\e[32m<<<<<<<<<< congigure YUM repo  >>>>>>>\e[0m"
+func_print_head congigure YUM repo  
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>>$log_file
+func_stat_check $?
 
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
-echo -e "\e[32m<<<<<<<<<< congigure YUM repo for rabbit MQ  >>>>>>>\e[0m"
+func_print_head congigure YUM repo for rabbit MQ  
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>>$log_file
+func_stat_check $?
 
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+func_print_head Install rabbitmq server  
+dnf install rabbitmq-server -y &>>$log_file
+func_stat_check $?
 
-echo -e "\e[32m<<<<<<<<<< Install rabbitmq server  >>>>>>>\e[0m"
+func_print_head restart rabbitmq server  
+systemctl enable rabbitmq-server &>>$log_file
+systemctl restart rabbitmq-server &>>$log_file
+func_stat_check $?
 
-dnf install rabbitmq-server -y 
-
-echo -e "\e[32m<<<<<<<<<< restart rabbitmq server  >>>>>>>\e[0m"
-
-systemctl enable rabbitmq-server 
-systemctl restart rabbitmq-server 
-
-echo -e "\e[32m<<<<<<<<<< create roboshop user   >>>>>>>\e[0m"
-
-rabbitmqctl add_user roboshop ${rabbitmq_appuser_password}
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+func_print_head create roboshop user   
+rabbitmqctl add_user roboshop ${rabbitmq_appuser_password} &>>$log_file
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>$log_file
+func_stat_check $?

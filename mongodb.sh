@@ -2,16 +2,21 @@ script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
-echo -e "\e[32m<<<<<<<<<< copy mongodb repo >>>>>>>\e[0m"
-cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 
-echo -e "\e[32m<<<<<<<<<< Install mongodb org >>>>>>>\e[0m"
-dnf install mongodb-org -y 
+func_print_head copy mongodb repo 
+cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
+func_stat_check $?
 
-echo -e "\e[32m<<<<<<<<<< Replace 127.0.0.1 with 0.0.0.0  >>>>>>>\e[0m"
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+func_print_head Install mongodb org 
+dnf install mongodb-org -y &>>$log_file
+func_stat_check $?
 
-echo -e "\e[32m<<<<<<<<<< Restart mongod  >>>>>>>\e[0m"
+func_print_head Replace 127.0.0.1 with 0.0.0.0  
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>$log_file
+func_stat_check $?
 
-systemctl enable mongod 
-systemctl restart mongod 
+func_print_head Restart mongod  
+
+systemctl enable mongod &>>$log_file
+systemctl restart mongod &>>$log_file
+func_stat_check $?

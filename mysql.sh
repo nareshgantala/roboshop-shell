@@ -7,23 +7,23 @@ if [ -z "mysql_root_password"]; then
 fi
 
 
+func_print_head Disable current mysql  
+dnf module disable mysql -y &>>$log_file
+func_stat_check $?
 
-echo -e "\e[32m<<<<<<<<<< Disable current mysql  >>>>>>>\e[0m"
+func_print_head copy mysql repo  
+cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo &>>$log_file
+func_stat_check $?
 
-dnf module disable mysql -y 
-echo -e "\e[32m<<<<<<<<<< copy mysql repo  >>>>>>>\e[0m"
+func_print_head install mysql server  
+dnf install mysql-community-server -y &>>$log_file
+func_stat_check $?
 
-cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo
+func_print_head start mysqld  
+systemctl enable mysqld &>>$log_file
+systemctl start mysqld  &>>$log_file
+func_stat_check $?
 
-echo -e "\e[32m<<<<<<<<<< install mysql server  >>>>>>>\e[0m"
-
-dnf install mysql-community-server -y
-
-echo -e "\e[32m<<<<<<<<<< start mysqld  >>>>>>>\e[0m"
-
-systemctl enable mysqld
-systemctl start mysqld  
-
-echo -e "\e[32m<<<<<<<<<< change default root password >>>>>>>\e[0m"
-
-mysql_secure_installation --set-root-pass RoboShop@1
+func_print_head change default root password 
+mysql_secure_installation --set-root-pass RoboShop@1 &>>$log_file
+func_stat_check $?
