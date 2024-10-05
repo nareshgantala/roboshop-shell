@@ -39,7 +39,7 @@ func_schema_setup(){
         func_stat_check $?
  
 
-        func_print_headLoad schema, includes countries and cities  
+        func_print_head Load schema, includes countries and cities  
         mysql -h mysql-dev.cloudlife.site -uroot -p${mysql_root_password} < /app/schema/shipping.sql &>>$log_file
         func_stat_check $?
 
@@ -49,7 +49,7 @@ func_schema_setup(){
 
 func_app_prereq(){
     id ${app_user} &>>$log_file
-    
+
     if [ $? -ne 0 ]; then
         func_print_head add roboshop user  
         useradd ${app_user} &>>$log_file
