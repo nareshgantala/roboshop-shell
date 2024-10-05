@@ -48,9 +48,13 @@ func_schema_setup(){
 }
 
 func_app_prereq(){
-    func_print_head add roboshop user  
-    useradd ${app_user} &>>$log_file
-    func_stat_check $?
+    id ${app_user} &>>$log_file
+    
+    if [ $? -ne 0 ]; then
+        func_print_head add roboshop user  
+        useradd ${app_user} &>>$log_file
+        func_stat_check $?
+    fi
 
     func_print_head create application directory
     rm -rf /app &>>$log_file
