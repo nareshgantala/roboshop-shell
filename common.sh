@@ -120,7 +120,8 @@ func_nodejs(){
     func_stat_check $?
     
     func_print_head debug code
-    echo $schema_setup
+    echo "schema_setup is set to: $schema_setup"
+
 
     func_schema_setup
     func_systemd_setup
