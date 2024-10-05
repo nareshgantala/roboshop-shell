@@ -55,6 +55,7 @@ func_app_prereq(){
         useradd ${app_user} &>>$log_file
         func_stat_check $?
     else
+        func_print_head add roboshop user  
         echo skipping user creation, as roboshop user already exists
     fi
 
