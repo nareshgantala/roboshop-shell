@@ -16,6 +16,7 @@ func_stat_check(){
     fi
 }
 
+
 func_schema_setup(){
     if [ "$schema_setup" = mongo ]; then
 
@@ -117,7 +118,8 @@ func_nodejs(){
     func_print_head "Install nodejs Dependencies" 
     npm install &>>$log_file
     func_stat_check $?
-
+    
+    echo $schema_setup
 
     func_schema_setup
     func_systemd_setup
