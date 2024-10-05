@@ -17,7 +17,7 @@ func_stat_check(){
 }
 
 func_schema_setup(){
-    if [ "$schema_setup" == mongo ]; then
+    if [ "$schema_setup" = mongo ]; then
 
         func_print_head copy mongoDB repo file
         cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
@@ -33,7 +33,7 @@ func_schema_setup(){
 
     fi
 
-    if [ "$schema_setup" == mysql ]; then
+    if [ "$schema_setup" = mysql ]; then
         func_print_head Install mysql  
         dnf install mysql -y &>>$log_file
         func_stat_check $?
@@ -121,9 +121,7 @@ func_nodejs(){
 
     func_schema_setup
     func_systemd_setup
-
     
-
 }
 
 func_java(){
