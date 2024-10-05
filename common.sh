@@ -54,11 +54,14 @@ func_app_prereq(){
         func_print_head add roboshop user  
         useradd ${app_user} &>>$log_file
         func_stat_check $?
+    else
+        echo skipping user creation, as roboshop user already exists
     fi
 
     func_print_head create application directory
     rm -rf /app &>>$log_file
     mkdir /app &>>$log_file
+    func_stat_check $?
     
     func_print_head download application zip file  
     curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>$log_file
