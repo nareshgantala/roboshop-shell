@@ -18,7 +18,7 @@ func_schema_setup(){
 
         mongo --host mongodb-dev.cloudlife.site </app/schema/${component}.js
     fi
-    if [ "$schema_setup" == mysql]; then
+    if [ "$schema_setup" == mysql ]; then
         func_print_head Install mysql  
         dnf install mysql -y 
 
@@ -90,8 +90,6 @@ func_java(){
     func_print_head Build application  
     mvn clean package 
     mv target/shipping-1.0.jar shipping.jar 
-
-
 
     func_systemd_setup
 
