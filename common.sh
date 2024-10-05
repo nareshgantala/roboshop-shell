@@ -1,6 +1,6 @@
 app_user=roboshop
 
-func_func_print_head(){
+func_print_head(){
      echo -e "\e[33m<<<<<<<<<< $* >>>>>>>\e[0m"
 }
 
