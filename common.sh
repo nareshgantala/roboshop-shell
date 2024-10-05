@@ -119,6 +119,7 @@ func_nodejs(){
     npm install &>>$log_file
     func_stat_check $?
     
+    func_print_head debug code
     echo $schema_setup
 
     func_schema_setup
