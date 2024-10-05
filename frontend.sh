@@ -20,6 +20,7 @@ func_print_head Download front end zip file
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>$log_file
 func_stat_check $?
 
+func_print_head move to html folder
 cd /usr/share/nginx/html &>>$log_file
 func_stat_check $?
 

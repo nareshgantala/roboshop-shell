@@ -29,7 +29,7 @@ func_schema_setup(){
         func_stat_check $?
 
         func_print_head Load master data of list of products 
-        mongo --host mongodb-dev.cloudlife.site </app/schema/${component}.js &>>$log_file
+        mongo --host mongodb-dev.cloudlife.site </app/schema/${component}.js 
         func_stat_check $?
 
     fi
@@ -41,8 +41,7 @@ func_schema_setup(){
  
 
         func_print_head Load schema, includes countries and cities  
-        mysql -h mysql-dev.cloudlife.site -uroot -p${mysql_root_password} < /app/schema/shipping.sql &>>$log_file
-        func_stat_check $?
+        mysql -h mysql-dev.cloudlife.site -uroot -p${mysql_root_password} < /app/schema/${component}.sql 
 
     fi 
 
