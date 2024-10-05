@@ -25,5 +25,5 @@ systemctl start mysqld  &>>$log_file
 func_stat_check $?
 
 func_print_head change default root password 
-mysql_secure_installation --set-root-pass RoboShop@1 &>>$log_file
+mysql_secure_installation --set-root-pass $mysql_root_password &>>$log_file
 func_stat_check $?
