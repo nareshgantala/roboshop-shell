@@ -28,6 +28,6 @@ unzip /tmp/frontend.zip &>>$log_file
 func_stat_check $?
 
 func_print_head Restart front end Service #some file needs to be created
-systemctl enable nginx 
-systemctl restart nginx 
+systemctl enable nginx &>>$log_file
+systemctl restart nginx &>>$log_file
 func_stat_check $?
