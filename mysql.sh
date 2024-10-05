@@ -4,6 +4,7 @@ mysql_root_password=$1
 
 if [ -z "$mysql_root_password" ]; then
     echo mysql password is missing
+    exit
 fi
 
 
