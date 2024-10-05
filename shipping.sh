@@ -9,5 +9,5 @@ fi
 
 component=shipping
 schema_setup=mysql
-func_java()
-func_systemd_setup()
+func_java
+func_systemd_setup
