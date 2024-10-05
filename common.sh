@@ -9,9 +9,9 @@ func_print_head(){
 
 func_stat_check(){
     if [ $1 -eq 0 ]; then
-        echo "\e[32m<<< SUCESS>>>\e[0m"
+        echo -e "\e[32m<<< SUCESS>>>\e[0m"
     else
-        echo "\e[31m<<< FAILURE >>>\e[0m"
+        echo -e "\e[31m<<< FAILURE >>>\e[0m"
         exit
     fi
 }
