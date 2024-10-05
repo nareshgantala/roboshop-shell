@@ -165,3 +165,23 @@ func_python(){
     func_systemd_setup
  
 }
+
+func_golang(){
+    func_print_head Install golang 
+    dnf install golang -y &>>$log_file
+    func_stat_check $?
+
+    func_app_prereq
+
+    func_print_head running go get, build commands 
+    go mod init dispatch &>>$log_file
+    func_stat_check $?
+
+    go get &>>$log_file
+    func_stat_check $?
+ 
+    go build &>>$log_file
+    func_stat_check $?
+
+    func_systemd_setup
+}
