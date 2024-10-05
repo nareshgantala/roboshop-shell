@@ -154,7 +154,7 @@ func_python(){
     func_app_prereq
 
     func_print_head copy rabbitmq password in payment service file
-    sed -i -e "s/rabbitmq_appuser_password/${rabbitmq_appuser_password}" ${script_path}/payment.service &>>$log_file
+    sed -i -e "s/rabbitmq_appuser_password/${rabbitmq_appuser_password}/" ${script_path}/payment.service &>>$log_file
     func_stat_check $?
 
 
