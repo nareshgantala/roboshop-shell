@@ -41,7 +41,7 @@ func_schema_setup(){
  
 
         func_print_head Load schema, includes countries and cities  
-        mysql -h mysql-dev.cloudlife.site -uroot -p${mysql_root_password} < /app/schema/${component}.sql 
+        mysql -h mysql-dev.cloudlife.site -uroot -p${mysql_root_password} </app/schema/${component}.sql 
 
     fi 
 
